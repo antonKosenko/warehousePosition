@@ -14,7 +14,7 @@ foreach ($exampleList as $indexRow => $row) {
         //add one to the index, by the condition of the task numbering does not start with zero, but with one.
         $pointKey = $indexRow + 1 . ("," . ($indexPoint + 1));
         $pointsList[$pointKey] = [
-            'string' => $indexRow + 1,
+            'row' => $indexRow + 1,
             'column' => $indexPoint + 1,
             'quantityDelivery' => $quantityDelivery
         ];
@@ -28,7 +28,7 @@ foreach ($pointsList as $currentPointKey => $currentPointData) {
         if ($pointKey === $currentPointKey) {
             continue;
         }
-        $distanceBetweenPoints = abs($currentPointData['string'] - $pointData['string']) +
+        $distanceBetweenPoints = abs($currentPointData['row'] - $pointData['row']) +
             abs($currentPointData['column'] - $pointData['column']);
 
         $pointsDistanceList[$currentPointKey][$pointKey] = $distanceBetweenPoints * $pointData['quantityDelivery'];
